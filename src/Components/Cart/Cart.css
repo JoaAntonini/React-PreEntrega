@@ -1,11 +1,135 @@
 
 .texto{
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
+}
+
+
+.formatoCompra{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+}
+.formatoDetalle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto;
 }
 
 .titulo{
     font-size: 5rem;
     text-align: center;
     text-decoration: underline;
+}
+
+.imagen{
+    width: 40%;
+    height: 30rem;
+}
+
+.vaciarCarro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 2.5rem;
+    text-align: center;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }

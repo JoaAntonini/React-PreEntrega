@@ -2,11 +2,13 @@
 //con rafce abro el modelo basico
 
 import {Link, NavLink } from 'react-router-dom'
+import { useCartContext } from '../Context/CartContext'
 import logo from '../img/logo-min.jpg'
 import CartWidget from '../NavBar/CartWidget/CartWidget'
 import './NavBar.css'
 
 const NavBar = () => {
+	const {cantidadTotal} = useCartContext()
   return (
 	<>	
 
@@ -33,12 +35,14 @@ const NavBar = () => {
                 <div id="sesion">
                     <button id="myBtn" className="btn btn-dark btn-lg active botonSesion" role="button" aria-pressed="true">Iniciar Sesión</button>
                 </div>
-				<Link to = '/cart'>
-					<div>
-						<CartWidget/>          
+				<div >
+					<Link to = '/cart'>
+					<div  className='opciones'>
+						{cantidadTotal()}
 					</div>
-				</Link>
-				
+						<CartWidget/>  
+					</Link>       
+				</div>				
 			</div>
 		</nav>
 		</>

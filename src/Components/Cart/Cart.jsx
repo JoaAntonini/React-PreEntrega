@@ -5,22 +5,33 @@ import './Cart.css';
 
 const Cart = () => {
 
-const {cartList, vaciarCarrito} = useCartContext()
+const {cartList, vaciarCarrito, precioTotal, eliminarProducto} = useCartContext()
 
   return (
     <div>
+      <div>
       <h1 className='titulo'>Productos Seleccionados</h1>
-      <ul>
+      <div>
         {cartList.map(item => (
-          <li className="texto" key={item.id}>
-            <img className="card-img-top w-50" src= {item.imagen} alt="Card image cap"/>
-            <a>Nombre:{item.nombre} </a>
-            <a>Cantidad: {item.cantidad} </a>
-            <a>Costo: $ {item.precio}      </a>   
-          </li>
+          <div className="texto formatoCompra" key={item.id}>
+            <img className="card-img-top imagen" src= {item.imagen} alt="Card image cap"/>
+            <div  className="formatoDetalle">
+                <a>Nombre:{item.nombre} </a>
+                <a>Cantidad: {item.cantidad} </a>
+                <a>Costo: $ {item.precio}      </a>  
+                <button className="btn btn-primary texto" onClick={() => eliminarProducto(item.id)}> Eliminar</button> 
+              </div>   
+          </div>
         ))}
-      </ul>
-      <button  className="btn btn-primary texto" onClick={vaciarCarrito}>Vaciar Carrito</button>
+      </div>
+     
+      </div>
+      <div>
+          <h6 className='texto'>Total compra: $ {precioTotal()}</h6>
+      </div>
+      <div className="vaciarCarro">
+      <button  className="btn btn-primary vaciarCarro" onClick={vaciarCarrito}>Vaciar Carrito</button>
+      </div>
     </div>
   )
 }
