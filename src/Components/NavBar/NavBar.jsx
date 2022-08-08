@@ -38,7 +38,8 @@ const NavBar = () => {
 				<div >
 					<Link to = '/cart'>
 					<div  className='opciones'>
-						{cantidadTotal()}
+						
+						<h6 className='texto'>{cantidadTotal() !== 0 ? `${cantidadTotal()}`: ``} </h6>
 					</div>
 						<CartWidget/>  
 					</Link>       

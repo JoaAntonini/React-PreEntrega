@@ -1,11 +1,11 @@
 
 import { useCartContext } from '../Context/CartContext'
-
+import {Link, NavLink } from 'react-router-dom'
 import './Cart.css';
 
 const Cart = () => {
 
-const {cartList, vaciarCarrito, precioTotal, eliminarProducto} = useCartContext()
+const {cartList, vaciarCarrito, precioTotal, eliminarProducto, cantidadTotal} = useCartContext()
 
   return (
     <div>
@@ -26,11 +26,12 @@ const {cartList, vaciarCarrito, precioTotal, eliminarProducto} = useCartContext(
       </div>
      
       </div>
-      <div>
-          <h6 className='texto'>Total compra: $ {precioTotal()}</h6>
+      <div className="vaciarCarro">
+          <h6 className='texto'>{precioTotal() !== 0 ? `Total compra: $ ${precioTotal()}`: <Link to = '/'> <h4 className='texto'>No hay items seleccionados aún</h4><button  className="btn btn-dark  vaciarCarro" >Volver al inicio</button></Link> } </h6>
       </div>
       <div className="vaciarCarro">
-      <button  className="btn btn-primary vaciarCarro" onClick={vaciarCarrito}>Vaciar Carrito</button>
+      <h6 className='texto'>{precioTotal() !== 0 ? <button  className="btn btn-light vaciarCarro" onClick={vaciarCarrito}>Vaciar Carrito</button> : ``} </h6>
+      <h6 className='texto'>{precioTotal() !== 0 ? <button className="btn btn-dark texto">Comprar</button> : ``} </h6>
       </div>
     </div>
   )

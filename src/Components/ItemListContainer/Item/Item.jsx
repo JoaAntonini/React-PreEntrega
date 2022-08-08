@@ -1,12 +1,12 @@
 
 
-import React from 'react'
+import React, { memo } from 'react'
 import {Link} from 'react-router-dom'
 import './Item.css'
 
-const Item = ({product}) => {
+const Item = memo( ({product}) => {
 
-
+  console.log('Item')
 
   return (				
 				   
@@ -24,7 +24,7 @@ const Item = ({product}) => {
                 </div>
 
   )
-
 }
+)
 export default Item
 

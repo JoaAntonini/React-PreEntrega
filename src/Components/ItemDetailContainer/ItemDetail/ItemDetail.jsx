@@ -30,10 +30,13 @@ const ItemDetail = ({producto}) => {
                             <p className="card-text texto">Modelo: {producto.nombre}</p>
                             <p className="card-text texto">Detalle: {producto.detalle}</p>
                             <p className="card-text texto">Precio: $ {producto.precio} </p>
-                            {cart ?                          
+                            {cart ?  
                             <ItemCount initial={1} stock={20} onAdd={onAdd}/>
                               :
-                            <Link to='/cart'><button className="btn btn-primary texto"> Ir al carrito</button></Link>
+                            <>
+                            <Link to='/cart'><button className="btn btn-primary texto"> Finalizar Compra</button></Link>
+                            <Link to='/'><button className="btn btn-primary texto"> Seguir comprando</button></Link>
+                            </>
                           }
                         </div> 
                 </div> 

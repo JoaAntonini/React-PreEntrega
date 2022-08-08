@@ -1,12 +1,12 @@
 
-import React from 'react'
+import React, { memo } from 'react'
 
 import Item from '../Item/Item'
 
-const ItemList = ({ productos }) => {
+const ItemList = memo(({ productos }) => {
 
-
-
+  console.log('ItemList')
+     
   return (
     <>
       <div id="box">
@@ -21,6 +21,8 @@ const ItemList = ({ productos }) => {
     </>
   )
 }
+)
+
 
 export default ItemList
 

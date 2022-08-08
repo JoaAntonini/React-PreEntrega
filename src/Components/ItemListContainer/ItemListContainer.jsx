@@ -10,8 +10,7 @@ import './ItemListContainer.css'
 const ItemListContainer = () => {
   const [ productos, setProductos ] = useState([])    
   const [ loading, setLoading ] = useState(true)
-
-
+  const [ bool, setBool] = useState(true)
   const { categoriaId } = useParams()
 
   
@@ -28,9 +27,20 @@ const ItemListContainer = () => {
           .finally(()=> setLoading(false) )
       }
      }, [categoriaId])
+
+     /*const cambiarBool = () => {
+        setBool(!bool)
+     }*/
   
+     const Loading = () =>{
+      useEffect (() => {
+        return() => console.log ('desmonto')
+      })
+      return <h1>Cargando productos</h1> 
+     }
 
-
+     console.log('ItemListContainer')
+     
   return (
     <>
       <div id="botonDoc">
@@ -49,12 +59,13 @@ const ItemListContainer = () => {
                       <li>Alfombras</li>
                     </ol>
                   </div>
+                 
                 </div>
             </div>
         </div>
       </div>
-      { loading ? 
-        <h1>Cargando productos</h1> 
+       { loading ? 
+        <Loading/> 
                     : 
                     <ItemList productos={productos} />
                 }
