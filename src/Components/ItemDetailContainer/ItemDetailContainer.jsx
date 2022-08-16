@@ -1,6 +1,6 @@
 import React from 'react'
 import {useParams } from 'react-router-dom'
-import {getFetch} from '../../Helpers/getfetch'
+import {doc, getDoc, getFirestore} from 'firebase/firestore'
 import {useEffect, useState} from 'react'
 import ItemDetail from './ItemDetail/ItemDetail'
 
@@ -9,19 +9,17 @@ const ItemDetailContainer = () => {
   const [ producto, setProducto ] = useState([])    
   const {detalleId} = useParams() 
   const [ loading, setLoading ] = useState(true)
- useEffect(()=>{
- if (detalleId){ 
-    getFetch(detalleId)  
-    .then(respuesta => setProducto(respuesta)) 
+
+  useEffect(()=>{
+    const db = getFirestore() //trae firestore
+    const queryProducto = doc(db,'Productos', detalleId) //importa un producto especifico
+    getDoc (queryProducto)  //traer documento
+    .then(resp => setProducto({ id: resp.id, ...resp.data()}))
     .catch( err => console.log(err) )
     .finally(()=> setLoading(false) )
-} else {
-      getFetch()
-      .then(respuesta => setProductos(respuesta))    
-      .catch( err => console.log(err) )
-      .finally(()=> setLoading(false) )
-  }
- }, [detalleId])
+  }, [detalleId])
+
+ 
 
  
  const Loading = () =>{

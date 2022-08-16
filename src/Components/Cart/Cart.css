@@ -21,7 +21,7 @@
 }
 
 .titulo{
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
     text-decoration: underline;
 }
@@ -43,16 +43,41 @@
 
 
 
+.formulario{
+    width: 50%;
+    margin-left: 5rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    border-radius: 24px 24px 24px 18px;
+    -webkit-border-radius: 24px 24px 24px 18px;
+    -moz-border-radius: 24px 24px 24px 18px;
+    border: 12px outset #5b5c61;
+    
+}
 
 
+.input{
+    font-size: 2.5rem;
+}
 
 
+.margen{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
-
-
-
-
-
+.idCompra{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-align: center;
+    color: black;
+    border-radius: 23px 133px 10px 22px;
+    -webkit-border-radius: 23px 133px 10px 22px;
+    -moz-border-radius: 23px 133px 10px 22px;
+    background: #bdddd4;
+    border: 16px outset #3f3f74;
+}
 
 
 

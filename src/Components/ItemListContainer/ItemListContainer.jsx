@@ -2,35 +2,31 @@
 import React from 'react'
 import ItemList from './ItemList/ItemList'
 import {useEffect , useState } from 'react'
-import {getFetch} from '../../Helpers/getfetch'
+import {collection,  getDocs, getFirestore, query, where} from 'firebase/firestore'
 import { useParams } from 'react-router-dom'
-
 import './ItemListContainer.css'
 
 const ItemListContainer = () => {
   const [ productos, setProductos ] = useState([])    
   const [ loading, setLoading ] = useState(true)
-  const [ bool, setBool] = useState(true)
   const { categoriaId } = useParams()
-
   
-  useEffect(()=>{
-    if (categoriaId){ 
-      getFetch()
-      .then(respuesta => setProductos(respuesta.filter(producto => producto.categoria === categoriaId)))  
-      .catch( err => console.log(err) )
-      .finally(()=> setLoading(false) )
-    } else {
-          getFetch()
-          .then(respuesta => setProductos(respuesta))    
-          .catch( err => console.log(err) )
-          .finally(()=> setLoading(false) )
-      }
-     }, [categoriaId])
+  
 
-     /*const cambiarBool = () => {
-        setBool(!bool)
-     }*/
+  const ObtenerProductosFirestore = (categoriaId) =>{    
+    const db = getFirestore() //trae firestore
+    const queryColeccion = collection(db,'Productos') //importa un producto especifico
+    const queryFiltrada = categoriaId ?  query(queryColeccion, where('categoria', '==', categoriaId)) : queryColeccion 
+    getDocs (queryFiltrada)  //traer documento
+    .then(resp => setProductos( resp.docs.map(prod => ({id: prod.id, ...prod.data()})) ) )
+    .catch( err => console.log(err) )
+    .finally(()=> setLoading(false) )
+  }
+
+  useEffect(()=>{
+    ObtenerProductosFirestore(categoriaId)    
+}, [categoriaId])
+
   
      const Loading = () =>{
       useEffect (() => {
@@ -39,7 +35,7 @@ const ItemListContainer = () => {
       return <h1>Cargando productos</h1> 
      }
 
-     console.log('ItemListContainer')
+
      
   return (
     <>

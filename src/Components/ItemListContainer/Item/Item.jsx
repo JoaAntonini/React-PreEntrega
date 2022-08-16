@@ -13,8 +13,8 @@ const Item = memo( ({product}) => {
                <div className="card" id="card" >
                 <img className="card-img-top" src={product.imagen} alt="Card image cap"/>
                     <div className="card-body texto">
-                      <p className="card-text texto">{product.categoria}</p>
-                       <p className="card-text texto">{product.nombre}</p>
+                      <p className="card-text texto">{product.nombre}</p>
+                       <p className="card-text texto">$ {product.precio}</p>
                    </div>
                    <div className='texto'>
                       <Link to = {`/detalle/${product.id}`}>
